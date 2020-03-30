@@ -3,12 +3,17 @@
 class Car {
     private $speed;
 
-    public function __construct(int $newSpeed){
-        $this->setSpeed($newSpeed);
+    public function __construct(){
+        $this->setSpeed(0);
     }
 
-    public function setSpeed(int $newSpeed) :void{
-        $this->speed = $newSpeed;
+    private function setSpeed(int $newSpeed) :void{
+        if($newSpeed <= 75) {
+            $this->speed = $newSpeed;
+        }
+//        else{
+//            // throw exception because this is too fast
+//        }
     }
 
     public function getSpeed() :int{
@@ -28,7 +33,7 @@ class Car {
     }
 }
 
-$jetta = new Car(0);
+$jetta = new Car();
 echo $jetta->getSpeed() . " MPH" . "<br>";
 $jetta->drive("highway");
 echo $jetta->getSpeed() . " MPH" . "<br>";
